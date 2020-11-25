@@ -1,0 +1,79 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>{% block title %}REM Register{% endblock %}</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="{% static 'reg_logstyles.css' %}">
+    <link rel="icon" 
+    type="image/png" 
+    href="{% static 'logo1.png' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+    <style>	
+       body{
+    background-image: url("{% static 'bg_login.png' %}");
+      }
+      .button {
+        text-decoration: none;
+        width: 20%;
+      }
+        </style>
+   </head>
+    
+</head>
+<body>
+    <div class="imgcontainer">
+        <img src="{% static 'logo1.png' %}" alt="Avatar" class="avatar">
+      </div>
+  
+    <form action="register" method="post">
+        {%csrf_token%}
+        <div class="container">
+          <h1 style="margin: 0 0;">{{plan}} REM Account</h1>
+          <!-- <input type="text" name="atype" placeholder="Account type"> -->
+          <select required name="types" style="width: 20%;">
+            <!-- <option selected="selected" disabled style="width: 20%; opacity:0.8;">Choose the account type </option> -->
+              <option value="standard">Standard</option>
+            
+              <option value="business">Business</option>
+              <option value="premium">Premium</option>
+            </select>
+             
+          <a class="button" target="_blank" href="/plans" style="opacity: 0.8;">View plan details</a>
+          <br> 
+          <input type="hidden" name="atype" value="types">
+
+        <input required type="text" name="first_name" placeholder="First Name" style="width: 20%;">
+        <input required type="text" name="last_name" placeholder="Last Name" style="width: 20%;"><br>
+        <input required  type="text" name="username" placeholder=" Username"style="width: 20%;">
+        <input required type="email" name="email" placeholder="Email "style="width: 20%;"><br>
+        <input required type="password" name="password1" placeholder="Password"style="width: 20%;">
+        <input required type="password" name="password2" placeholder="Confirm Password"style="width: 20%;"><br>
+        <input required type="date" name="dob" placeholder="DOB"style="width: 20%;">
+        <input required type="text" name="phoneno" placeholder="Phone Number"style="width: 20%;"><br>
+        <input required type="text" name="occupation" placeholder="Occupation"style="width: 20%;">
+        <input required type="text" name="city" placeholder="City "style="width: 20%;"><br>
+        <input required  type="text" name="state" placeholder="State "style="width: 20%;">
+        <input  required type="text" name="country" placeholder="Country "style="width: 20%;"><br>
+ 
+
+        <button type="submit" id="registerbutton" style="width: 20%; opacity:0.8;">Register</button>
+    </form>
+    <br>
+    Already have an account? :       <a  href="/auth/login">Login</a>
+
+</div>
+<div class="bottom-container">
+  <footer>
+    <p>© 2020 REM.</p>
+  </footer>
+  </div>
+    <div>
+        {% for message in messages%}
+        <h3>{{message}}</h3>
+        {%endfor%}
+    </div>
+</body>
+</html>

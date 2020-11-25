@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}REM Edit Details{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <div class="cardcontainer card1 page foldtr note" style=" margin-left:30px; width:auto;margin-top:0;text-align: left;">
+    <form action="editsubmission" method="post">
+        {%csrf_token%}
+        <div class="container">
+          <h3 style="margin: 0 0;">Edit REM Account Details</h3>
+          <!-- <input type="text" name="atype" placeholder="Account type"> -->
+          <select name="types" style="width:22em;">
+            <option selected="selected" disabled >Choose the account type </option>
+              <option value="standard">Standard</option> 
+              <option value="business">Business</option>
+              <option value="premium">Premium</option>
+            </select>
+             
+          <a class="button" target="_blank" href="/plans" style="opacity: 0.8;width:20em;">View plan details</a>
+          <br> 
+          <input type="hidden" name="atype" value="types">
+
+        Change your email address:<br><input type="email" name="email" placeholder="Email "><br>
+        Change your password:<br><input type="password" name="password1" placeholder="Password">
+        <input type="password" name="password2" placeholder="Confirm Password"><br>
+        Phone number:<br><input type="text" name="phoneno" placeholder="Phone Number"><br>
+        Change your occupation detail:<br><input type="text" name="occupation" placeholder="Occupation"><br>
+        Change your location information:<br><input type="text" name="city" placeholder="City ">
+        <input type="text" name="state" placeholder="State ">
+        <input type="text" name="country" placeholder="Country "><br>
+
+        <button type="button" onclick="location.href='account';" class=".button" style="width: 21.25em;">Cancel</button>
+        <button type="submit" style="width: 21.25em;">Confirm</button>
+    </form>
+  </div>
+    {% endblock content %}
+    
+</body>
+</html>

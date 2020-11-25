@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}REM Plans{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    
+          <!-- <div class="card1 page foldtr note" style="margin-left:20px;" > -->
+            <div class="cardcontainer card1 page foldtr note" style="width:30em;float:left;margin-left:20px;margin-top:0;">
+              <h2><b>Standard $99/ mo</b></h2>
+              <hr>
+              <ul class="list-unstyled" style="font-size: medium;" >
+                <li>Monitoring </li>
+                <li>No Services</li>
+                <li>No Alerts and Callouts</li>
+                <li>24x7 Support</li>
+              </ul>
+            </div>
+          <!-- </div> -->
+          <!-- <div class="card1 page foldtr note" style="margin-left:20px;" > -->
+            <div class="cardcontainer card1 page foldtr note" style="width:30em;float:left;margin-left:20px;margin-top:0;">
+              <h2><b>Premium $199/ mo</b></h2>
+              <hr>
+              <ul class="list-unstyled" style="font-size: medium;">
+                <li>Monitoring</li>
+                <li>Service on request</li>
+                <li>Alerts and Callouts </li>
+                <li>24x7 Support</li>
+              </ul>
+
+            <!-- </div> -->
+          </div>
+          <!-- <div class="card1 page foldtr note" style="margin-left:20px;"> -->
+            <div class="cardcontainer card1 page foldtr note" style=" width:30em;float:left;margin-left:20px;margin-top:0;">
+              <h2><b>Business $299/ mo</b></h2>
+              <hr>
+              <ul class="list-unstyled" style="font-size: medium;">
+                <li>Monitoring</li>
+                <li>Service on request</li>
+                <li>Alerts and Callouts </li>
+                <li>24x7 Support</li>
+
+              </ul>
+
+            <!-- </div> -->
+           
+    </div>
+    {% endblock content %}
+    
+</body>
+</html>

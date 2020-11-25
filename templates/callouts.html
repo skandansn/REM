@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}REM Callouts{% endblock %}</title>
+    {% block content %}
+    <style>
+      ul.timeline {
+          list-style-type: none;
+          position: relative;
+      }
+      ul.timeline:before {
+          content: ' ';
+          background: #d4d9df;
+          display: inline-block;
+          position: absolute;
+          left: 29px;
+          width: 2px;
+          height: 100%;
+          z-index: 400;
+      }
+      ul.timeline > li {
+          margin: 20px 0;
+          padding-left: 20px;
+      }
+      ul.timeline > li:before {
+          content: ' ';
+          background: white;
+          display: inline-block;
+          position: absolute;
+          border-radius: 50%;
+          border: 3px solid #808080;
+          left: 20px;
+          width: 20px;
+          height: 20px;
+          z-index: 400;
+      }
+      .news{
+          overflow: auto;
+      }
+      /*scrollbar*/
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888; 
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+      }
+          </style>
+</head>
+<body>
+    <!-- <div class="card1 page foldtr note" style="opacity: 1;display:block;height: 370px;"> -->
+        <div class="cardcontainer card1 page foldtr note" style=" width:auto;float:left;margin-left:30px;margin-top:0;">
+    {% for i in callout %}
+    {% if i.efficiency <= 25 %}
+    <p> The efficiency of your installation {{ i.inst_id }} is less at a rate of {{ i.efficiency }}. </p>
+    {% endif %}
+    {% if i.status.lower == 'inactive' %}
+    <p> Your installation {{ i.inst_id }} is inactive now. </p>
+    {% endif %}
+    <hr>
+
+    {% endfor %}
+    <button onclick="location.href='callmail';" id="callmail">Mail me</button>
+<!-- </div> -->
+</div>
+<div class="cardcontainer card1 page news" style="margin-top: 0;width:32em;margin-right: 10px;height: 60em;padding-top: 30px;">
+  <div class="row" style="margin-top: 0;">
+    <div class="col-md-12">
+      <h3 class="text-info">Bulletin Board</h3>
+      <hr>
+      <ul class="timeline">
+        <li>
+          <p>Welcome to our community!!</p>
+
+        </li>
+        <li>
+          <p>Hello New Users!!</p>
+          <p class="text-secondary">You will get an instruction manual in your email inbox within 1-2 working days, after your registration.</p>
+        </li>
+        <li>
+          <p class="text-danger">Our New Feature- Consultation Services!!</p>
+          <p class="text-secondary">We now offer expert consultaion services for our Business and Premium users. You can contact our Customer Services for more information.</p>
+        </li>
+        <li>
+          <p>Join our Social Media Community</p>
+          <p class="text-secondary">For more updates on our social events, join our social media community.The links are given below in the Footer.</p>
+        </li>
+        <li>
+          <p>Remove an Installation</p>
+          <p class="text-secondary">Please book a Consultation service slot and explain your reasons for removal. ADDITIONAL CHARGES MAY APPLY!</p>
+        </li>
+        <li>
+          <p>Check out our REM Team</p>
+          <p class="text-secondary">You can personally contact our team members using their Linkedin account.You can find the our team details in the footer links</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+    {% endblock content %}
+
+    
+</body>
+</html>

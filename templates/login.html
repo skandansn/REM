@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>{% block title %}REM Login{% endblock %}</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" href="{% static 'reg_logstyles.css' %}">
+	<link rel="icon" 
+    type="image/png" 
+    href="{% static 'logo1.png' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet"> </head>
+	<style>	
+	body{
+		background-image: url("{% static 'bg_login.png' %}");
+	}
+		</style>
+
+<body  class="animate-in" >
+	<div class="imgcontainer"> <img src="{% static 'logo1.png' %}" alt="Avatar" class="avatar"> </div>
+	<div class="container">
+		<h1>Login</h1>
+		<form action="login" method="post">
+			{%csrf_token%}
+			<input type="text" name="username" placeholder="Username" style="width: 15%;">
+			<br>
+			<input type="password" name="password" placeholder="Password" style="width: 15%;">
+      <br>
+			<button type="submit" style="width: 15%;">Login</button>
+		</form>
+		<br>
+		Don't have an account? :       <a  href="/auth/register">Register</a>
+
+	
+		<div>
+			<!-- {% for message in messages%}-->
+			<div class="container">
+				<h3>{{message}}</h3>
+				{%endfor%}
+			</div>
+		</div>
+		<div class="bottom-container">
+			<footer>
+				<p>© 2020 REM.</p>
+			</footer>
+		  </div>
+		 
+</body>
+
+</html>

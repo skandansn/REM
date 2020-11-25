@@ -1,0 +1,254 @@
+body {
+  text-transform: capitalize;
+
+	margin: 0;
+	/* background-image: url(bg5.jpg);
+  background-size: 1540px 850px; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+	text-align: center;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 13px;
+	color: #555555;
+}
+p{
+	font-size: 9px;
+}
+input[type=text],
+input[type=password],
+input[type=date],
+input[type=email],
+.dropdown {
+	opacity: 1;
+	width: 50%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #eeeeee;
+	box-sizing: border-box;
+	
+}
+
+button,input[type=submit],.button {
+	background-color: white;
+	color: #555555;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	text-align: center;
+	opacity: 1;
+	width: 50%;
+}
+/*--Addinst--*/
+select{
+  opacity: 1;
+	width: 80%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #eeeeee;
+	box-sizing: border-box;
+
+}
+@media screen and (max-width: 800px) {
+  input[type=text],
+input[type=password],
+input[type=date],
+.dropdown,select{
+      width: 60%; /* The width is 100%, when the viewport is 800px or smaller */
+      }
+    button,input[type=submit],.button{
+      width: 50%;
+    }
+  
+
+  }
+
+/*--Addinst--*/
+button:hover,.button:hover {
+	opacity: 1;
+}
+.button:hover,input[type=submit]:hover,button:hover{
+	background-color:rgba(0,153,153,1);
+	color: black;
+}
+.imgcontainer {
+	margin: 24px 0 12px 0;
+}
+
+img.avatar {
+	opacity: 0.75;
+	width: 25%;
+	border-radius: 5%;
+}
+
+.container {
+	padding: 16px;
+}
+footer{
+	color:black;
+}
+table,
+td {
+    border: 1px solid #333;
+	  width:600px;
+}
+
+  /*---navigation bar--*/
+
+.navi1{
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  opacity: 0.75;
+  display:inline-block;
+
+}
+.navilist{
+	display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+
+  
+  }
+.navilist:hover {
+	background-color:rgba(0,153,153,0.75);
+	color: black;
+  }
+.naviimg{
+	margin: 0;
+  padding: 0;
+  width: 200px;
+  opacity: 0.75;
+  /* border-radius: 10%; */
+}
+.page {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+    padding-top: 40px;
+}
+.wide {
+    width: 90%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.clear, .clearfix {
+    zoom: 100%;
+}
+/*--index page--*/
+.indexbody{
+	margin: 0 0 210px 210px;
+	padding: 0px 10px 15px 10px;
+	width: auto;
+	height:auto;
+	position: relative;
+  text-align: justify;
+
+}
+.indexbody p {
+	font-size: larger; 
+	text-align: center;
+}
+#page-side{
+	cursor: pointer;
+	opacity: 1;
+	height: 338.65px;
+	width:200px;
+	display:inline;
+	float: left;
+}
+/*---cards style---*/
+.card1 {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(255,255,255,0.5);
+    transition: 0.3s;
+    width: auto;
+    height: auto;
+    background-color: rgba(255,255,255,0.75);
+  
+}
+
+
+.card1:hover {
+    box-shadow: 0 8px 16px 0 rgba(255,255,255,0.2);
+}
+
+.cardcontainer {
+    padding: 2px 16px;
+    text-align: center;
+    opacity: 1;
+}
+.cardcontainer ul {
+    text-align: left;
+}
+.cardcontainer li{
+    margin: 3px 0;
+}
+
+  .note {
+    position: relative;
+    width: 30%;
+    padding: 1em 1.5em;
+    margin: 2em auto;
+    overflow: hidden;
+  }
+  
+  .note:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 16px 16px 0;
+    border-style: solid;
+    border-color: #fff rgba(73,73,73, 0.7);
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    display: block; width: 0;
+  }
+  
+  .note.rounded {
+    -moz-border-radius: 5px 0 5px 5px;
+    border-radius: 5px 0 5px 5px;
+  }
+  
+  .note.rounded:before {
+    border-width: 8px;
+    border-color: #fff #fff transparent transparent;
+    -moz-border-radius: 0 0 0 5px;
+    border-radius: 0 0 0 5px;
+  }
+
+  /* transtion */
+  .animate-in {
+    -webkit-animation: fadeIn .25s ease-in;
+    animation: fadeIn .25s ease-in;
+}
+
+.animate-out {
+    -webkit-transition: opacity .25s;
+    transition: opacity .25s;
+    opacity: 0;
+}
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

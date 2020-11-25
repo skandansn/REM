@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static %}
+
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'reg_logstyles.css' %}">
+      <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet"> </head>
+    <title>{% block title %}REM Account{% endblock %}</title>
+    
+    <style>
+      body{
+        background-image: url(bg_account.png);
+        color: black;
+      }
+      @media screen and (max-width: 800px) {
+      .card1 {
+          width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+          }
+
+      }
+    </style>
+      /* build your own custom Bootstrap theme:
+   https://themestr.app
+*/
+{% block content %}
+<style>
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #808080;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+.news{
+    overflow: auto;
+}
+/*scrollbar*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+    </style>
+</head>
+<body>
+
+      <aside class="cardcontainer card1 page foldtr note"style="margin-left:30px; width:40em; margin-top:0;text-align:center;float:left" >
+        <h4><b>{{stake.fname}} {{stake.lname}}</b></h4>
+        <hr>
+        <ul>
+          <li>Account ID : {{stake.id}}</li>
+          <li style="text-transform: lowercase;">{{stake.email}}</li>
+          <li>{{stake.city.city}}</li>
+          <li>{{stake.dob}}</li>
+          <li>{{client.account_type.account_type}}</li>
+          {% for i in phone %}
+          <li>{{i.phoneno}}</li>
+          {% endfor %}
+        </ul>
+        <button type="button" onclick="location.href='editdetails';" class=".button" style="width: 15em;">Edit Details</button>
+      </aside>
+
+      <div class="cardcontainer card1 page news" style="margin-top: 0;width:32em;margin-right: 10px;height: 60em;padding-top: 30px;">
+        <div class="row" style="margin-top: 0;">
+          <div class="col-md-12">
+            <h3 class="text-info">Bulletin Board</h3>
+            <hr>
+            <ul class="timeline">
+              <li>
+                <p>Welcome to our community!!</p>
+  
+              </li>
+              <li>
+                <p>Hello New Users!!</p>
+                <p class="text-secondary">You will get an instruction manual in your email inbox within 1-2 working days, after your registration.</p>
+              </li>
+              <li>
+                <p class="text-danger">Our New Feature- Consultation Services!!</p>
+                <p class="text-secondary">We now offer expert consultaion services for our Business and Premium users. You can contact our Customer Services for more information.</p>
+              </li>
+              <li>
+                <p>Join our Social Media Community</p>
+                <p class="text-secondary">For more updates on our social events, join our social media community.The links are given below in the Footer.</p>
+              </li>
+              <li>
+                <p>Remove an Installation</p>
+                <p class="text-secondary">Please book a Consultation service slot and explain your reasons for removal. ADDITIONAL CHARGES MAY APPLY!</p>
+              </li>
+              <li>
+                <p>Check out our REM Team</p>
+                <p class="text-secondary">You can personally contact our team members using their Linkedin account.You can find the our team details in the footer links</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+
+      
+
+{% endblock content %}
+
+</body>
+</html>
+

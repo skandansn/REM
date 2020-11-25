@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title>{% block title %}REM View Installations{% endblock %}</title>
+        <style>
+          #map {
+            height: 250px;
+            width: 25%; 
+           }
+           
+        </style>
+       
+</head>
+     
+{% block content %}
+<body>
+
+<script defer
+
+  src="https://maps.googleapis.com/maps/api/js?key=insertkey&callback=initMap">
+
+  </script>
+   
+  <script>
+function initMap()
+{
+  for (i=1;i<=parseInt('{{leng}}');i++)
+    {
+   las = "{{la | safe}}"
+   los = "{{lo | safe}}"
+   las = JSON.parse(las)
+   los = JSON.parse(los)
+       var la=las[i-1]
+       var lo=los[i-1]
+       console.log(la, lo)
+      
+  
+      var uluru = {lat: la, lng: lo};
+      var map = new google.maps.Map(
+        document.getElementById('map'+i.toString()), {zoom: 8, center: uluru});
+      var marker = new google.maps.Marker({position: uluru, map: map});
+  
+   
+    }
+  
+
+}
+    
+  </script>
+
+
+
+<!-- <div id="inslist"> -->
+    
+  
+  <!-- <div class="indexbody " style="background: rgba(73, 73, 73, 0.5);"> -->
+
+    {% for inst in inst %} 
+
+      <!-- <div class="card1 page note" style="margin-left:20px;float:left;"> -->
+          <div class="cardcontainer card1 page note " style="margin-left:30px; float:left; width:364px; height:885px;margin-top:0;">
+            <div  id="map{{ forloop.counter }}"style="width: 25em; height: 22em; margin:auto;"> </div>
+            <hr style="margin: 10px 0 2px 0; width: 100%; height: 5px;">
+
+        
+              <h1> {{inst.inst_id}}  </h1>
+              <p class="title">Account ID : {{inst.c.id}}</p>
+              <p>Capacity: {{inst.capacity}}</p>
+              <p>Location: {{inst.gps}}</p>
+      
+              {% if inst.status == 'inactive' %}
+              <form id="turnon" action="{% url 'turnoninst' %}" method="POST">
+                {% csrf_token %}
+                <p>Status: {{inst.status}}</a>
+                <input type="submit" name="trash1" value="Turn it on."/>
+                <input type="hidden" name="idon" value="{{inst.inst_id}}"/></p>
+              </form>
+              {% else %}
+              <form id="turnoff" action="{% url 'turnoffinst' %}" method="POST">
+                {% csrf_token %}
+                <p>Status: {{inst.status}}</a>
+                  <input type="submit" name="trash2" value="Turn it off."/>
+                <input type="hidden" name="idoff" value="{{inst.inst_id}}"/></p>
+              </form>
+              {% endif %}
+       
+              <p>la: {{inst.la}}</p>
+              <p>lo: {{inst.lo}}</p>
+              <p>Efficiency: {{inst.efficiency}}%</p>
+              {% for s in solar %}
+              {% if s.inst.inst_id == inst.inst_id %}
+              <p>Humidity: {{s.humidity}}</p>
+              <p>Quanity of Panels: {{s.quantity_of_panels}}</p>
+              <p>Cloud Cover: {{s.cloud_cover}}</p>
+              {% endif %}
+              {% endfor %}
+      
+              {% for w in wind %}
+              {% if w.inst.inst_id == inst.inst_id %}
+              <p>Rotor Radius: {{w.rotorradius}}</p>
+              <p>Blade Radius: {{w.blade}}</p>
+              <p>Wind Speed: {{w.windspeed}}</p>
+              {% endif %}
+              {% endfor %}
+      
+              {% for t in tidal %}
+              {% if t.inst.inst_id == inst.inst_id %}
+              <p>Tidal Potential: {{t.tidalpotential}}</p>
+              <p>Dimension: {{t.dimension}}</p>
+              <p>Barrage Size: {{t.barragesize}}</p>
+              {% endif %}
+              {% endfor %}
+      
+              {% for h in hydro %}
+              {% if h.inst.inst_id == inst.inst_id %}
+              <p>River: {{h.river}}</p>
+              <p>Dam Name: {{h.damname}}</p>
+              <p>Current Level : {{h.currlevel}}</p>
+              <p>Height: {{h.height}}</p>
+              <p>Length: {{h.length}}</p>
+              {% endif %}
+              {% endfor %}
+      
+              {% for b in bio %}
+              {% if b.inst.inst_id == inst.inst_id %}
+              <p>Methane: {{b.methane}}</p>
+              <p>Conversion Method: {{b.conversionmethod}}</p>
+              {% endif %}
+              {% endfor %}
+      
+              {% for g in geo %}
+              {% if g.inst.inst_id == inst.inst_id %}
+              <p>Flow Rate: {{g.flowrate}}</p>
+              <p>Internal Temperature: {{g.temp}}</p>
+              {% endif %}
+              {% endfor %}
+          
+            <!-- </div> -->
+          </div>
+
+      {% endfor %}
+    <!-- </div> -->
+  </body>
+{% endblock content %}
+
+
+</html>

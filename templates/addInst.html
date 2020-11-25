@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <title>{% block title %}REM Add Installations{% endblock %}</title>
+</head>
+<body>
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
+</script>
+<!-- <div style="display: block;margin-left:29%;margin-top:15%;opacity: 0.85;width: 100%;padding: 12px 20px;box-sizing: border-box;"> -->
+        <!-- Choose the Installation: -->
+        <!-- <div class="card1 page foldtr note" style="opacity: 1;display:block;height: auto;width:auto;"> -->
+            <div class="cardcontainer card1 page foldtr" style=" margin-left:30px; width:auto;margin-top:0;text-align: left; ">
+    <h3 style="padding-top: 10px;">Add Your Installation:</h3>
+    <hr>
+    <div>
+        <form action="addInst" method="POST">
+    <select name="types">
+    <option selected="selected" disabled>Choose the installation type </option>
+      <option value="solar">Solar</option>
+      <option value="wind">Wind</option>
+      <option value="hydro">Hydro</option>
+      <option value="tidal">Tidal</option>
+      <option value="bio">Biomass</option>
+      <option value="geo">Geothermal</option>
+    </select>
+</div>
+
+    <div class="solar box">You have selected <strong>Solar Installation</strong>
+        <br>
+       
+            {%csrf_token%}
+            <div class="container" style="padding-bottom:0;">
+        Quanity of Panels:<br><input type="text" name="qop" placeholder="Quanity of Panels"><br>
+        Humidity:<br><input type="text" name="hum" placeholder="Humidity"><br>
+        Cloud Cover:<br><input type="text" name="cc" placeholder="Cloud Cover"><br>
+</div>
+    </div>
+    <div class="wind box">You have selected <strong>Wind Installation</strong>
+        <br>
+       
+            {%csrf_token%}
+            <div class="container"style="padding-bottom:0;">
+       
+        Rotor Radius:<br><input type="text" name="rr" placeholder="Rotor Radius"><br>
+        Blade Radius:<br><input type="text" name="br" placeholder="Blade Radius"><br>
+        Wind Speeed:<br><input type="text" name="ws" placeholder="Wind Speeed"><br>
+   
+</div>
+    </div>
+    <div class="tidal box">You have selected <strong>Tidal Installation</strong> 
+        <br>
+       
+            {%csrf_token%}
+            <div class="container"style="padding-bottom:0;">
+       
+        Tidal Potential:<br> <input type="text" name="tidalpot" placeholder="Tidal Potential"><br>
+        Dimension:<br><input type="text" name="dim" placeholder="Dimension"><br>
+        Barrage Size:<br> <input type="text" name="barragesize" placeholder="Barrage Size"><br>
+
+</div>
+    </div>
+
+    <div class="hydro box">You have selected <strong>Hydro Installation</strong>
+    <br>
+
+        {%csrf_token%}
+        <div class="container"style="padding-bottom:0;">
+        
+        River:<br><input type="text" name="river" placeholder="River"><br>
+        Dam Name:<br><input type="text" name="damn" placeholder="Dam Name"><br>
+        Current Level:<br> <input type="text" name="currlvl" placeholder="Current Level"><br>
+        Height:<br><input type="text" name="height" placeholder="Height"><br>
+        Length:<br> <input type="text" name="length" placeholder="Length"><br>
+
+  
+</div>
+    </div>
+
+    <div class="bio box">You have selected <strong>Biomass Installation</strong>
+        <br>
+       
+            {%csrf_token%}
+            <div class="container"style="padding-bottom:0;">
+       
+        Methane:<br><input type="text" name="methane" placeholder="Methane"><br>
+        Conversion Method:<br> <input type="text" name="conme" placeholder="Conversion Method"><br>
+  
+</div>
+    </div>
+
+    <div class="geo box">You have selected <strong>Geothermal Installation</strong>
+        <br>
+        
+            {%csrf_token%}
+            <div class="container"style="padding-bottom:0;">
+        
+        Flow Rate:<br><input type="text" name="flow" placeholder="Flow Rate"><br>
+        Internal temperature:<br><input type="text" name="inttemp" placeholder="Internal temperature"><br>  
+     
+  
+</div>  
+
+    </div>
+    <script>
+        function manage(txt) {
+            var bt = document.getElementById('addsubmit');
+            var ele = document.getElementsByClassName('importantinputs'); 
+    
+            // Loop through each element.
+            for (i = 0; i < ele.length; i++) {
+    
+                // Check the element type
+                if (ele[i].type == 'text' && ele[i].value == '') {
+                    bt.disabled = true;    // Disable the button.
+                    return false;
+                }
+                else {
+                    bt.disabled = false;   // Enable the button.
+                }
+            }
+        }  
+    </script>
+    <div class="container" style="padding-top:0;">
+        Capacity:<br><input class="importantinputs" type="text" onkeyup="manage(this)" name="cap" placeholder="Capacity"><br>
+        Efficiency:<br><input class="importantinputs" type="text" onkeyup="manage(this)" name="eff" placeholder="Efficiency"><br>
+        Location:<br><input class="importantinputs" type="text" onkeyup="manage(this)" name="loc" placeholder="Location"><br>
+        Status:<br><input class="importantinputs" type="text" onkeyup="manage(this)" name="status" placeholder="Status"><br></div>
+        <input type="submit" disabled style="width: 10em;" value="Add" id="addsubmit">
+</form>
+</div>
+<!-- </div> -->
+
+<!-- </div> -->
+
+{% endblock content %}
+
+</body>
+</html>
